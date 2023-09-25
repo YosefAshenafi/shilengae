@@ -1,26 +1,26 @@
 /* eslint-disable react/prop-types */
 import { filter } from 'lodash';
 // import { sentenceCase } from 'change-case';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 // material
 import {
-  Card,
-  Table,
-  Stack,
   Button,
+  Card,
   Checkbox,
-  TableRow,
+  CircularProgress,
+  Container,
+  Stack,
+  Table,
   TableBody,
   TableCell,
-  Container,
-  Typography,
   TableContainer,
   TablePagination,
-  CircularProgress
+  TableRow,
+  Typography
 } from '@material-ui/core';
-import { TreeView, TreeItem } from '@material-ui/lab';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { TreeItem, TreeView } from '@material-ui/lab';
 
 // import {  } from "@material-ui/icons-";
 // components
@@ -33,9 +33,9 @@ import CategoryDrawer from '../components/category/CreateCategory';
 import EditCategoryDrawer from '../components/category/EditCategory';
 //
 // import USERLIST from '../_mocks_/user';
-import { getAllCategories, deleteCategory, getCategoryByLevel } from '../request/category';
-import { CategoryPreview } from '../components/form-fields/PreviewCategoryModal';
 import { AlertDialog } from '../components/_dashboard/user/UserMoreMenu';
+import { CategoryPreview } from '../components/form-fields/PreviewCategoryModal';
+import { deleteCategory, getAllCategories, getCategoryByLevel } from '../request/category';
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [

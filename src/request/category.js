@@ -83,13 +83,6 @@ const deleteCategory = async (category_id) => {
 };
 
 export {
-  getAllCategories,
-  getCategoryByLevel,
-  createCategory,
-  getCategoryDetail,
-  updateCategory,
-  deleteCategory,
-  getSelectableCategories,
-  getAllCategoriesWithSubCategories,
-  getCategoryFilterStats
+  createCategory, deleteCategory, getAllCategories, getAllCategoriesWithSubCategories, getCategoryByLevel, getCategoryDetail, getCategoryFilterStats, getSelectableCategories, updateCategory
 };
+

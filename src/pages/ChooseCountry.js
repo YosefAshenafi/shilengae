@@ -1,8 +1,8 @@
 // import { sentenceCase } from 'change-case';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // material
-import { Stack, Container, Typography, Button } from '@material-ui/core';
+import { Button, Container, Stack, Typography } from '@material-ui/core';
 
 // components
 import Page from '../components/Page';
@@ -19,7 +19,8 @@ export default function CreateForm() {
       setOperatingCountry(country.id);
     });
   }, [operatingCountry]);
-
+  console.log();
+  console.log("No country");
   return (
     <Page title="Create Form | Shilengae">
       <Container>

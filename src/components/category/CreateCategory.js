@@ -1,23 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import {
-  Stack,
-  Button,
-  IconButton,
-  TextField,
-  Typography,
-  Drawer,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem
-} from '@material-ui/core';
 import closeFill from '@iconify/icons-eva/close-fill';
 import { Icon } from '@iconify/react';
+import {
+  Button,
+  Drawer,
+  FormControl,
+  IconButton,
+  InputLabel,
+  MenuItem,
+  Select,
+  Stack,
+  TextField,
+  Typography
+} from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { createCategory } from '../../request/category';
 import { getAllForms } from '../../request/form';
+
+function createCateogry1(name, status, parent, form, setIsCreating){
+  try{
+    createCategory(name, status, parent, form)
+            .then(() => {
+              fetchCategories();
+              setIsCreating(false);
+              toggleDrawer();
+            })
+            .catch((e) => {
+              setIsCreating(false);
+            });
+            }
+  catch(e){
+
+  }
+  window.location.reload();
+  }
 
 const CreateCategory = ({
   isOpenFilter,
@@ -108,22 +126,7 @@ const CreateCategory = ({
         style={{ marginTop: '20px', padding: '10px 0' }}
         onClick={() => {
           setIsCreating(true);
-          createCategory(name, status, parent, form)
-            .then(() => {
-              fetchCategories();
-              setIsCreating(false);
-              toggleDrawer();
-            })
-            .catch((e) => {
-              Object.entries(e.response.data).forEach((e) => {
-                if (e[1][0].includes('This field may not be blank')) {
-                  setError(`* ${e[1]} may not be blank`);
-                } else {
-                  setError(`* ${e[1]}`);
-                }
-              });
-              setIsCreating(false);
-            });
+          createCateogry1(name, status, parent, form, setIsCreating);
         }}
       >
         {!isCreating ? 'Add' : 'Creating Category...'}

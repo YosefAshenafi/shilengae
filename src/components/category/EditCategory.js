@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import {
-  Stack,
-  Button,
-  IconButton,
-  TextField,
-  Typography,
-  Drawer,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem
-} from '@material-ui/core';
 import closeFill from '@iconify/icons-eva/close-fill';
 import { Icon } from '@iconify/react';
+import {
+  Button,
+  Drawer,
+  FormControl,
+  IconButton,
+  InputLabel,
+  MenuItem,
+  Select,
+  Stack,
+  TextField,
+  Typography
+} from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { getAllCategories, getCategoryDetail, updateCategory } from '../../request/category';
@@ -134,11 +134,14 @@ const EditCategoryDrawer = ({ isOpenFilter, toggleDrawer, categoryId, refetchCat
           setIsCreating(true);
           updateCategory(categoryId, name, status, parentCategory, form)
             .then(() => {
-              refetchCategories();
+              // refetchCategories();
               setIsCreating(false);
-              toggleDrawer(categoryId);
+              // toggleDrawer(categoryId);
+              window.location.reload(false);
             })
             .catch((e) => {
+              window.location.reload(false);
+
               Object.entries(e.response.data).forEach((e) => setError(`* ${e[1]}`));
 
               setError(`* ${e.response.data.name[0]}`);

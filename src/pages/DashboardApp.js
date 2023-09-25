@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 // localization
 import { useTranslation } from 'react-i18next';
 // material
-import { Box, Grid, Container, Typography } from '@material-ui/core';
+import { Box, Container, Grid, Typography } from '@material-ui/core';
 // components
 import Page from '../components/Page';
 // import ChooseCountry from '../components/country/ChooseCountry';
@@ -10,10 +10,10 @@ import Page from '../components/Page';
 // import { chosenCountry } from '../request/country';
 
 import {
-  // AppTasks,
-  AppNewUsers,
   AppBugReports,
   AppItemOrders,
+  // AppTasks,
+  AppNewUsers,
   // AppNewsUpdate,
   AppWeeklySales
   // AppWebsiteVisits,
@@ -21,8 +21,8 @@ import {
   // AppCurrentSubject,
   // AppConversionRates
 } from '../components/_dashboard/app';
-import { getStats } from '../request/api';
 import MainCategoryStats from '../components/_dashboard/app/MainCategoryStats';
+import { getStats } from '../request/api';
 
 // ----------------------------------------------------------------------
 
@@ -51,25 +51,25 @@ export default function DashboardApp() {
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
             <AppWeeklySales
-              total={stats.num_of_ads}
+              // total={stats.num_of_ads}
               tooltipText="Displays total number of active ads"
             />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <AppNewUsers
-              total={stats.num_of_users}
+              // total={stats.num_of_users}
               tooltipText="Displays total number of verified users"
             />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <AppItemOrders
-              total={stats.num_of_users_signed_up_last_month}
+              // total={stats.num_of_users_signed_up_last_month}
               tooltipText="Displays number of new verified users in the current month"
             />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <AppBugReports
-              total={stats.num_of_active_users}
+              // total={stats.num_of_active_users}
               tooltipText="Displays the number of Active users in the app. 
                            Activity indicates that a user has been online within 7 days"
             />
