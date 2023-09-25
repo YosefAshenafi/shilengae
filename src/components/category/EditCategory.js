@@ -19,6 +19,24 @@ import { Link as RouterLink } from 'react-router-dom';
 import { getAllCategories, getCategoryDetail, updateCategory } from '../../request/category';
 import { getAllForms } from '../../request/form';
 
+function updateCategory2(categoryId, name, status, parentCategory, form, setIsCreating){
+  updateCategory(categoryId, name, status, parentCategory, form)
+            .then(() => {
+              // refetchCategories();
+              setIsCreating(false);
+              // toggleDrawer(categoryId);
+              window.location.reload(false);
+            })
+            .catch((e) => {
+              window.location.reload(false);
+
+              Object.entries(e.response.data).forEach((e) => setError(`* ${e[1]}`));
+
+              setError(`* ${e.response.data.name[0]}`);
+              setIsCreating(false);
+            });
+}
+
 const EditCategoryDrawer = ({ isOpenFilter, toggleDrawer, categoryId, refetchCategories }) => {
   const [name, setName] = useState('');
   const [status, setStatus] = useState('ACTIVE');
@@ -132,21 +150,7 @@ const EditCategoryDrawer = ({ isOpenFilter, toggleDrawer, categoryId, refetchCat
         style={{ marginTop: '20px', padding: '10px 0' }}
         onClick={() => {
           setIsCreating(true);
-          updateCategory(categoryId, name, status, parentCategory, form)
-            .then(() => {
-              // refetchCategories();
-              setIsCreating(false);
-              // toggleDrawer(categoryId);
-              window.location.reload(false);
-            })
-            .catch((e) => {
-              window.location.reload(false);
-
-              Object.entries(e.response.data).forEach((e) => setError(`* ${e[1]}`));
-
-              setError(`* ${e.response.data.name[0]}`);
-              setIsCreating(false);
-            });
+          updateCategory2(categoryId, name, status, parentCategory, form);
         }}
       >
         {!isCreating ? 'Edit' : 'Updating Category...'}
