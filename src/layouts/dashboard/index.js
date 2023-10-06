@@ -42,7 +42,9 @@ export default function DashboardLayout() {
 
   useEffect(() => {
     loggedInProfile().then((res) => {
-      setAccount(res.data);
+      if(res){
+        setAccount(res.data);
+      }
     });
   }, []);
 
